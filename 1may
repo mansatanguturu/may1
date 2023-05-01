@@ -1,0 +1,98 @@
+show databases;-- to get all databases present in schemas
+
+
+select *from rgm;
+select *from stu;
+update rgm set name='manu' where contact_number =8776678;
+create table test1(stu_id int primary key,stu_name varchar(40),stu_marks int);
+select * from test1;
+insert into test1 select * from stu;
+truncate table stu -- to delete the data not structure
+delete from stu where stu_name="manasa"; -- to del the data in a column
+drop table test1-- entire table will del
+alter table stu rename column stu_name to name; -- can alter the name of the coloumn and data
+select * from rgm;
+alter table rgm add course varchar(40);
+update rgm set course="java" where Name="amrutha";
+delete from rgm;
+update rgm set course="C" where Name="amrutha";
+alter table rgm MODIFY COLUMN course varchar(20);
+alter table rgm drop column session,drop column Name;
+
+
+
+update rgm set name='manu',Address="kurnool" where contact_number =1234567890;
+CREATE TABLE hi(ID INT ,FILED INT,MARKS INT);
+TABLE hi;
+INSERT INTO hi VALUES(1,1,1),(NULL,NULL,NULL),(1,NULL,NULL);
+SELECT COUNT(*) FROM hi;  -- IT WILL INCLUDE NULL AND DUPLICATES ALSO
+SELECT COUNT(ID) FROM hi; -- IT WILL DOESNOT INCLUDE NULL,AND ALLOW DUPLICATES
+SELECT COUNT(DISTINCT ID) FROM hi; -- IT WILL DOESN'T ALLOW NULL AND DUPLICATES
+select *from hi;
+CREATE DATABASE EXERCISE;
+SELECT * FROM CUSTOMER;
+CREATE TABLE CUSTOMER (ID INT PRIMARY KEY,NAME VARCHAR(20),CITY VARCHAR(30),GRADE INT,SALESMAN_ID INT);
+
+INSERT INTO CUSTOMER VALUES (101,'SUNEEL','DELHI',98,201),
+(102,'VAMSI','HYDERABAD',198,202),
+(103,'VISHNU','MUMBAI',79,203),
+(104,'DON','KERALA',178,204),
+(105,'TIRU','KADAPA',200,205),
+(106,'CHARAN','BANGALOOR',100,206),
+(107,'CHINTU','CHENNAI',296,207),
+(108,'RAJESH','KOLKATA',67,208),
+(109,'VINAY','GUJARAT',94,209),
+(110,'SATYABANGARAM','RAJASTAN',168,210);
+-- to find the details of cus whose grade greater than 100
+select * from customer where grade>100;
+
+-- to find the details of cus whose grade greater than 100 in asc
+select * from customer where grade>100 order by grade;
+-- to find who are living in hyd and grade<=100
+select * from customer where city="hyderabad" and grade <=100;
+select * from customer where city="hyderabad" and grade >=100;
+-- to find who are living in hyd or grade>=100
+select * from customer where city="hyderabad" or grade >=100;
+-- to find the cus details living in who r either kerala or who dont have a grade more than 100
+select * from customer where city="kerala" or not grade >=100;
+-- to identify the cus who donot belong to city mumbai or have a grade that exceeds 200
+select * from customer where not city="mumbai" or  grade >200;
+-- find the order details excluding dates30/4/2023 and sales man id more than 202 or purchase amount greater than 1000
+create table order1(order_num int,purchase_amount int,order_date date ,cus_id int primary key,salesman_id int);
+INSERT INTO order1 VALUES(100,1000,'2023-10-2',103,89)
+INSERT INTO order1 VALUES(101,500,'2023-10-2',569,567)
+INSERT INTO order1 VALUES(102,800,'2023-10-6',150,56)
+INSERT INTO order1 VALUES(103,100000,'2023-10-1',160,56)
+INSERT INTO order1 VALUES(104,20000,'2023-10-26',120,67)
+INSERT INTO order1 VALUES(105,5678,'2023-10-25',138,78)
+INSERT INTO order1 VALUES(106,900,'2023-10-29',123,56)
+INSERT INTO order1 VALUES(107,20000,'2023-10-26',190,56)
+INSERT INTO order1 VALUES(108,789,'2023-10-6',125,76)
+INSERT INTO order1 VALUES(109,600,'2023-1-2',176,78)
+select *from order1
+
+create table salesman(
+salesman_id int primary key,
+name varchar(40) not null,
+city varchar(40) not null,
+commissoin float
+);
+INSERT INTO salesman VALUES("490","manasa",1234567890,0.14);
+INSERT INTO salesman VALUES("491","ammu",568789775,0.78);
+INSERT INTO salesman VALUES("492","mouni",1767890,0.67);
+INSERT INTO salesman VALUES("493","mahi",1566576,0.67);
+INSERT INTO salesman VALUES("494","chandra",97867890,0.12);
+select * from salesman;
+select name ,commissoin from salesman;
+select * from salesman where commission between 0.1 and 0.6;
+select name from salesman where name like'c%';
+-- create a new column address insert some data in addreess and dispay in desc order
+
+alter table salesman add column address varchar(40);
+update salesman set address="kurnool" where Name="manasa";
+update salesman set address="kadapa" where Name="ammu";
+update salesman set address="kurnool" where Name="mouni";
+update salesman set address="atp" where Name="mahi";
+update salesman set address="tdp" where Name="chandra";
+select address as sales_man_address from salesman order by address desc;
+
